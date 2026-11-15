@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MasjidIn" />
+  <meta name="theme-color" content="#064E3B" />
+  <title>MasjidIn — Live Jama'at & Mosque Directory</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #064E3B;
+      --primary-light: #047857;
+      --gold: #D97706;
+      --gold-bg: #FEF3C7;
+      --bg: #F4F7F5;
+      --card: #FFFFFF;
+      --text: #111827;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, #064E3B 0%, #065F46 100%);
+      color: #fff;
+      padding: env(safe-area-inset-top, 20px) 18px 22px;
+      padding-top: max(22px, env(safe-area-inset-top));
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      box-shadow: 0 8px 24px rgba(6, 78, 59, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .logo-badge {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28);
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .brand h1 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+    .brand p { font-size: 11px; opacity: 0.85; }
+    .loc-btn {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+      color: #fff; padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      cursor: pointer;
+    }
+    .search-box {
+      width: 100%; background: #fff; border: none; border-radius: 14px;
+      padding: 12px 15px; font-size: 14px; color: var(--text); outline: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .filters {
+      display: flex; gap: 8px; padding: 14px 16px 6px; overflow-x: auto;
+    }
+    .chip {
+      padding: 7px 15px; border-radius: 999px; font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border); background: #fff; color: var(--muted);
+      cursor: pointer; white-space: nowrap;
+    }
+    .chip.active {
+      background: var(--primary); color: #fff; border-color: var(--primary);
+    }
+    .container { max-width: 640px; margin: 0 auto; padding: 10px 16px; }
+    .card {
+      background: var(--card); border-radius: 20px; padding: 16px;
+      margin-bottom: 14px; border: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      cursor: pointer; transition: transform 0.12s ease;
+    }
+    .card:active { transform: scale(0.99); }
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .mosque-name { font-size: 17px; font-weight: 800; color: var(--text); line-height: 1.3; }
+    .verified {
+      display: inline-block; background: #DCFCE7; color: #166534;
+      font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-left: 6px;
+    }
+    .address { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .dist-pill {
+      background: var(--gold-bg); color: #92400E; font-size: 12px; font-weight: 700;
+      padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+    }
+    .prayer-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px;
+    }
+    .p-box {
+      background: #F8FAFC; border: 1px solid #EEF2F6; border-radius: 12px;
+      padding: 8px 6px; text-align: center;
+    }
+    .p-name { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+    .p-time { font-size: 13px; font-weight: 800; color: var(--primary); margin-top: 2px; }
+    .announcement {
+      margin-top: 12px; background: #FFFBEB; border-left: 3px solid var(--gold);
+      padding: 8px 10px; border-radius: 8px; font-size: 12.5px; color: #78350F;
+    }
+    .card-actions {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 12px; padding-top: 10px; border-top: 1px solid #F3F4F6;
+    }
+    .dir-btn {
+      background: var(--primary); color: #fff; text-decoration: none;
+      padding: 7px 14px; border-radius: 10px; font-size: 12.5px; font-weight: 700;
+    }
+    .center-msg { text-align: center; padding: 50px 20px; color: var(--muted); font-size: 14px; }
+    /* Modal */
+    .modal-bg {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none;
+      align-items: flex-end; justify-content: center; z-index: 100;
+    }
+    .modal-bg.open { display: flex; }
+    .modal {
+      background: #fff; width: 100%; max-width: 640px; border-top-left-radius: 26px;
+      border-top-right-radius: 26px; padding: 22px 20px 34px; max-height: 88vh; overflow-y: auto;
+    }
+    .modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .close-btn {
+      background: #F3F4F6; border: none; width: 32px; height: 32px; border-radius: 50%;
+      font-size: 18px; cursor: pointer;
+    }
+    .full-row {
+      display: flex; justify-content: space-between; padding: 11px 14px;
+      background: #F9FAFB; border-radius: 12px; margin-bottom: 8px; font-size: 14px;
+    }
+    .ios-banner {
+      background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46;
+      padding: 10px 14px; border-radius: 14px; font-size: 12.5px; margin-bottom: 12px;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-row">
+      <div class="brand">
+        <div class="logo-badge">🕌</div>
+        <div>
+          <h1>MasjidIn</h1>
+          <p>Live Jama'at & Mosque Directory</p>
+        </div>
+      </div>
+      <button class="loc-btn" id="locBtn" onclick="requestLocation()">📍 Nearest</button>
+    </div>
+    <input type="text" id="searchInput" class="search-box" placeholder="Search mosque, area, or city..." oninput="renderMosques()" />
+  </header>
+
+  <div class="filters">
+    <button class="chip active" onclick="setFilter('All', this)">All Mosques</button>
+    <button class="chip" onclick="setFilter('Nearest', this)">Nearest</button>
+    <button class="chip" onclick="setFilter('Verified', this)">Verified</button>
+  </div>
+
+  <div class="container">
+    <div class="ios-banner" id="iosTip">
+      <span>📲 <b>Install on iPhone:</b> Tap <b>Share (⬆️)</b> → <b>Add to Home Screen</b></span>
+      <span style="cursor:pointer;font-weight:800;" onclick="document.getElementById('iosTip').style.display='none'">✕</span>
+    </div>
+    <div id="mosqueList"><div class="center-msg">Loading live mosques...</div></div>
+  </div>
+
+  <div class="modal-bg" id="detailModal" onclick="if(event.target===this) closeModal()">
+    <div class="modal" id="modalContent"></div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAcNighKKqvhJiFBhDxKZJJebz8yas-iwI",
+      authDomain: "masjidin-136c2.firebaseapp.com",
+      projectId: "masjidin-136c2",
+      storageBucket: "masjidin-136c2.firebasestorage.app",
+      messagingSenderId: "358153553383",
+      appId: "1:358153553383:web:4c507f9de1490cfa1e2942",
+      measurementId: "G-17HLXZR903"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let allMosques = [];
+    let currentFilter = 'All';
+    let userCoords = null;
+
+    function calcDist(lat1, lon1, lat2, lon2) {
+      if (!lat1 || !lon1 || !lat2 || !lon2) return null;
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    window.requestLocation = function() {
+      if (!navigator.geolocation) return alert("Location not supported");
+      document.getElementById("locBtn").innerText = "Locating...";
+      navigator.geolocation.getCurrentPosition(pos => {
+        userCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        document.getElementById("locBtn").innerText = "📍 Located";
+        renderMosques();
+      }, () => {
+        document.getElementById("locBtn").innerText = "📍 Nearest";
+        alert("Please allow location permission in browser settings.");
+      });
+    };
+
+    window.setFilter = function(f, btn) {
+      currentFilter = f;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      if (f === 'Nearest' && !userCoords) window.requestLocation();
+      renderMosques();
+    };
+
+    window.renderMosques = function() {
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      let list = allMosques.map(m => {
+        const d = userCoords ? calcDist(userCoords.lat, userCoords.lng, m.latitude, m.longitude) : null;
+        return { ...m, _dist: d };
+      });
+
+      if (q) {
+        list = list.filter(m =>
+          (m.name || "").toLowerCase().includes(q) ||
+          (m.address || "").toLowerCase().includes(q) ||
+          (m.city || "").toLowerCase().includes(q)
+        );
+      }
+      if (currentFilter === 'Verified') list = list.filter(m => m.isVerified);
+      if (currentFilter === 'Nearest') list.sort((a, b) => (a._dist ?? 9999) - (b._dist ?? 9999));
+
+      const container = document.getElementById("mosqueList");
+      if (!list.length) {
+        container.innerHTML = `<div class="center-msg">No mosques found.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map((m, idx) => {
+        const pt = m.prayerTimes || {};
+        const distTag = m._dist != null ? `<span class="dist-pill">${m._dist.toFixed(1)} km</span>` : '';
+        const verTag = m.isVerified ? `<span class="verified">✔ Verified</span>` : '';
+        const ann = m.announcement ? `<div class="announcement">📢 ${m.announcement}</div>` : '';
+        const mapsUrl = (m.latitude && m.longitude)
+          ? `https://www.google.com/maps/dir/?api=1&destination=${m.latitude},${m.longitude}`
+          : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((m.name || '') + ' ' + (m.address || ''))}`;
+
+        return `
+          <div class="card" onclick="openModal(${idx})">
+            <div class="card-head">
+              <div>
+                <div class="mosque-name">${m.name || 'Mosque'}${verTag}</div>
+                <div class="address">📍 ${m.address || ''} ${m.city ? '• ' + m.city : ''}</div>
+              </div>
+              ${distTag}
+            </div>
+            <div class="prayer-grid">
+              <div class="p-box"><div class="p-name">Fajr</div><div class="p-time">${pt.fajrIqamah || '--:--'}</div></div>
+              <div class="p-box"><div class="p-name">Dhuhr</div><div class="p-time">${pt.dhuhrIqamah || '--:--'}</div></div>
+              <div class="p-box"><div class="p-name">Asr</div><div class="p-time">${pt.asrIqamah || '--:--'}</div></div>
+              <div class="p-box"><div class="p-name">Maghrib</div><div class="p-time">${pt.maghribIqamah || '--:--'}</div></div>
+              <div class="p-box"><div class="p-name">Isha</div><div class="p-time">${pt.ishaIqamah || '--:--'}</div></div>
+              <div class="p-box"><div class="p-name">Jumu'ah</div><div class="p-time">${pt.jumuahIqamah || '--:--'}</div></div>
+            </div>
+            ${ann}
+            <div class="card-actions" onclick="event.stopPropagation()">
+              <span style="font-size:12px;color:#6B7280;font-weight:600;">❤️ ${m.likesCount || 0} Likes</span>
+              <a class="dir-btn" href="${mapsUrl}" target="_blank">Directions ↗</a>
+            </div>
+          </div>
+        `;
+      }).join('');
+      window._renderedList = list;
+    };
+
+    window.openModal = function(idx) {
+      const m = window._renderedList[idx];
+      if (!m) return;
+      const pt = m.prayerTimes || {};
+      const mapsUrl = (m.latitude && m.longitude)
+        ? `https://www.google.com/maps/dir/?api=1&destination=${m.latitude},${m.longitude}`
+        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent((m.name || '') + ' ' + (m.address || ''))}`;
+
+      document.getElementById("modalContent").innerHTML = `
+        <div class="modal-top">
+          <h2 style="font-size:20px;font-weight:800;">${m.name || 'Mosque'}</h2>
+          <button class="close-btn" onclick="closeModal()">✕</button>
+        </div>
+        <p style="font-size:13px;color:#6B7280;margin-bottom:14px;">📍 ${m.address || ''} ${m.city ? ', ' + m.city : ''}</p>
+        ${m.announcement ? `<div class="announcement" style="margin-bottom:14px;">📢 <b>Announcement:</b> ${m.announcement}</div>` : ''}
+        <div class="full-row"><b>Fajr Jama'at</b><span>${pt.fajrIqamah || '--:--'}</span></div>
+        <div class="full-row"><b>Dhuhr Jama'at</b><span>${pt.dhuhrIqamah || '--:--'}</span></div>
+        <div class="full-row"><b>Asr Jama'at</b><span>${pt.asrIqamah || '--:--'}</span></div>
+        <div class="full-row"><b>Maghrib Jama'at</b><span>${pt.maghribIqamah || '--:--'}</span></div>
+        <div class="full-row"><b>Isha Jama'at</b><span>${pt.ishaIqamah || '--:--'}</span></div>
+        <div class="full-row"><b>Jumu'ah Jama'at</b><span>${pt.jumuahIqamah || '--:--'}</span></div>
+        <a class="dir-btn" href="${mapsUrl}" target="_blank" style="display:block;text-align:center;padding:13px;margin-top:14px;font-size:14px;">Open in Maps ↗</a>
+      `;
+      document.getElementById("detailModal").classList.add("open");
+    };
+
+    window.closeModal = function() {
+      document.getElementById("detailModal").classList.remove("open");
+    };
+
+    onSnapshot(collection(db, "mosques"), snapshot => {
+      allMosques = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      renderMosques();
+    }, err => {
+      document.getElementById("mosqueList").innerHTML = `<div class="center-msg">Error loading mosques: ${err.message}</div>`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "MasjidIn - Jama'at Times",
+  "short_name": "MasjidIn",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#064E3B",
+  "theme_color": "#064E3B",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2319/2319870.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
