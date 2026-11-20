@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MasjidIn - Official Android App</title>
+    <link rel="icon" type="image/png" href="icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -45,13 +46,12 @@
             margin-bottom: 18px;
             padding: 0 4px;
         }
-        .brand-logo {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary-green);
-            letter-spacing: -0.5px;
+        .brand-logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
-        .brand-logo span { color: var(--gold); }
         .verified-pill {
             display: inline-flex;
             align-items: center;
@@ -65,7 +65,7 @@
             border-radius: 99px;
         }
 
-        /* Main Hero Card (Matching App's Dark Green Card) */
+        /* Main Hero Card */
         .hero-card {
             background: linear-gradient(145deg, var(--primary-green) 0%, var(--dark-green) 100%);
             border-radius: 24px;
@@ -97,13 +97,20 @@
         .app-icon-box {
             width: 68px;
             height: 68px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1.5px solid rgba(245, 184, 29, 0.45);
             border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid rgba(245, 184, 29, 0.45);
+            background: rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+        }
+        .app-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .app-title-area h1 {
             font-size: 24px;
@@ -123,7 +130,7 @@
             margin-bottom: 20px;
         }
 
-        /* Stats Strip (Play Store Style) */
+        /* Stats Strip */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -300,9 +307,9 @@
 <body>
 
     <div class="container">
-        <!-- Top Brand Bar -->
+        <!-- Top Brand Bar (Your Wordmark Logo) -->
         <div class="top-bar">
-            <div class="brand-logo">masjid<span>in</span></div>
+            <img src="logo.png" alt="MasjidIn" class="brand-logo-img">
             <div class="verified-pill">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                 Official Release
@@ -312,11 +319,9 @@
         <!-- Main App Card -->
         <div class="hero-card">
             <div class="app-header">
+                <!-- Your App Icon Logo -->
                 <div class="app-icon-box">
-                    <!-- Custom Mosque Icon matching app -->
-                    <svg width="38" height="38" viewBox="0 0 24 24" fill="#F5B81D">
-                        <path d="M12 2C10.5 3.8 8 5.5 8 8.5V10H16V8.5C16 5.5 13.5 3.8 12 2ZM4 7V21H9V16C9 14.34 10.34 13 12 13C13.66 13 15 14.34 15 16V21H20V7H18V11H6V7H4ZM2 21H22V22H2V21Z"/>
-                    </svg>
+                    <img src="icon.png" alt="MasjidIn Icon">
                 </div>
                 <div class="app-title-area">
                     <h1>MasjidIn</h1>
