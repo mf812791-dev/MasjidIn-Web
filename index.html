@@ -3,56 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasjidIn - Official App Download</title>
+    <title>MasjidIn - Official Android App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f0f4f8; color: #1e293b; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .card { background: #ffffff; max-width: 440px; width: 100%; border-radius: 20px; padding: 32px 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; }
-        .badge { display: inline-block; background: #dcfce7; color: #166534; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 99px; margin-bottom: 14px; }
-        h1 { font-size: 28px; color: #0f172a; margin-bottom: 8px; }
-        p.subtitle { font-size: 15px; color: #475569; line-height: 1.5; margin-bottom: 24px; }
-        .download-btn { display: block; width: 100%; background: #059669; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: 700; padding: 16px; border-radius: 12px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35); transition: background 0.2s; cursor: pointer; }
-        .download-btn:hover { background: #047857; }
-        .chrome-btn { display: none; margin-top: 12px; width: 100%; background: #2563eb; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px; border-radius: 10px; }
-        .warning-box { display: none; margin-top: 14px; padding: 12px; background: #fef3c7; border: 1px solid #f59e0b; color: #92400e; border-radius: 10px; font-size: 13px; line-height: 1.5; text-align: left; }
-        .meta { font-size: 12px; color: #64748b; margin-top: 10px; }
-        .guide { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-top: 24px; text-align: left; }
-        .guide h3 { font-size: 14px; color: #0f172a; margin-bottom: 10px; }
-        .guide ol { padding-left: 18px; font-size: 13px; color: #334155; line-height: 1.6; }
-        .guide li { margin-bottom: 6px; }
-        .footer { margin-top: 20px; font-size: 12px; color: #94a3b8; }
+        :root {
+            --bg-cream: #FBF9F2;
+            --primary-green: #0B462F;
+            --dark-green: #073322;
+            --gold: #F5B81D;
+            --gold-soft: #FEF5D9;
+            --gold-border: #F3D98B;
+            --text-dark: #11241C;
+            --text-muted: #52665E;
+            --card-white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+        
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 16px 40px;
+        }
+
+        .container {
+            max-width: 460px;
+            width: 100%;
+        }
+
+        /* Top Trust Bar */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 0 4px;
+        }
+        .brand-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-green);
+            letter-spacing: -0.5px;
+        }
+        .brand-logo span { color: var(--gold); }
+        .verified-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #E6F4EE;
+            color: var(--primary-green);
+            border: 1px solid #BCE0D0;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 11px;
+            border-radius: 99px;
+        }
+
+        /* Main Hero Card (Matching App's Dark Green Card) */
+        .hero-card {
+            background: linear-gradient(145deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            border-radius: 24px;
+            padding: 26px 22px;
+            color: #FFFFFF;
+            box-shadow: 0 14px 30px rgba(11, 70, 47, 0.22);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            background: rgba(245, 184, 29, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .app-icon-box {
+            width: 68px;
+            height: 68px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(245, 184, 29, 0.45);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .app-title-area h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin-bottom: 3px;
+        }
+        .app-title-area .dev-name {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        .app-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.55;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Strip (Play Store Style) */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 12px 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .stat-item { position: relative; }
+        .stat-item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.16);
+        }
+        .stat-val {
+            font-size: 14px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 2px;
+        }
+        .stat-lbl {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Primary Gold CTA Button */
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: var(--gold);
+            color: #0D261C;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 800;
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(245, 184, 29, 0.35);
+            transition: transform 0.15s, background 0.2s;
+            cursor: pointer;
+        }
+        .download-btn:active { transform: scale(0.98); }
+
+        .chrome-btn {
+            display: none;
+            margin-top: 12px;
+            width: 100%;
+            background: #FFFFFF;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 13px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .warning-box {
+            display: none;
+            margin-top: 14px;
+            padding: 12px;
+            background: rgba(254, 243, 199, 0.95);
+            color: #78350F;
+            border-radius: 12px;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        /* Features Section */
+        .section-card {
+            background: var(--card-white);
+            border: 1px solid #E6E2D6;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 14px rgba(17, 36, 28, 0.04);
+        }
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .feat-box {
+            background: var(--bg-cream);
+            border: 1px solid #ECE7D8;
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .feat-icon {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .feat-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+        .feat-sub {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        /* Install Guide Steps */
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .step-num {
+            width: 24px;
+            height: 24px;
+            background: var(--gold-soft);
+            border: 1px solid var(--gold-border);
+            color: var(--primary-green);
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+        .step-text strong { color: var(--text-dark); }
+
+        .footer {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .footer strong { color: var(--primary-green); }
     </style>
 </head>
 <body>
-    <div class="card">
-        <span class="badge">✓ Latest Official Version</span>
-        <h1>MasjidIn</h1>
-        <p class="subtitle">Real-time Jama'at prayer times, 10-minute alerts, aur masjid announcements apne mobile par paayein.</p>
-        
-        <a id="dlBtn" href="https://github.com/mf812791-dev/MasjidIn-Releases/releases/latest/download/app-release.apk" class="download-btn" onclick="handleDownload()">
-            ⬇ Download App (APK)
-        </a>
 
-        <a id="chromeBtn" href="intent://mf812791-dev.github.io/MasjidIn-Web/#Intent;scheme=https;package=com.android.chrome;end" class="chrome-btn">
-            🌐 Open in Chrome to Download
-        </a>
-
-        <div id="inAppWarning" class="warning-box">
-            ⚠️ <strong>WhatsApp/App Browser Detected:</strong> Yahan se direct download block ho sakta hai. Upar neele button <strong>"Open in Chrome"</strong> par click karein ya upar <strong>3 dots (⋮) → Open in Chrome</strong> chunein.
+    <div class="container">
+        <!-- Top Brand Bar -->
+        <div class="top-bar">
+            <div class="brand-logo">masjid<span>in</span></div>
+            <div class="verified-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                Official Release
+            </div>
         </div>
 
-        <div class="meta">Free • Android • Direct Official Download (21.2 MB)</div>
+        <!-- Main App Card -->
+        <div class="hero-card">
+            <div class="app-header">
+                <div class="app-icon-box">
+                    <!-- Custom Mosque Icon matching app -->
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="#F5B81D">
+                        <path d="M12 2C10.5 3.8 8 5.5 8 8.5V10H16V8.5C16 5.5 13.5 3.8 12 2ZM4 7V21H9V16C9 14.34 10.34 13 12 13C13.66 13 15 14.34 15 16V21H20V7H18V11H6V7H4ZM2 21H22V22H2V21Z"/>
+                    </svg>
+                </div>
+                <div class="app-title-area">
+                    <h1>MasjidIn</h1>
+                    <div class="dev-name">Fahad Studio • Verified App</div>
+                </div>
+            </div>
 
-        <div class="guide">
-            <h3>📲 Install karne ka aasan tarika:</h3>
-            <ol>
-                <li>Upar <strong>Download App</strong> button par click karein.</li>
-                <li>Agar phone me <em>"File might be harmful"</em> dikhe, to <strong>Download anyway</strong> par click karein (yeh bilkul safe hai).</li>
-                <li>Download poora hone par file kholein aur <strong>Install</strong> par click karein.</li>
-            </ol>
+            <p class="app-desc">
+                Apne nazdeeki masjid ka sahi Jama'at waqt, 10-minute pehle alert, aur zaroori ailaan (announcements) seedhe apne mobile par dekhein.
+            </p>
+
+            <!-- Play Store Style Stats -->
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-val">21.2 MB</div>
+                    <div class="stat-lbl">App Size</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val">100% Free</div>
+                    <div class="stat-lbl">No Subscription</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val">Android 7+</div>
+                    <div class="stat-lbl">Compatible</div>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <a id="dlBtn" href="https://github.com/mf812791-dev/MasjidIn-Releases/releases/latest/download/app-release.apk" class="download-btn" onclick="handleDownload()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download Official APK</span>
+            </a>
+
+            <a id="chromeBtn" href="intent://mf812791-dev.github.io/MasjidIn-Web/#Intent;scheme=https;package=com.android.chrome;end" class="chrome-btn">
+                🌐 Open in Chrome to Download
+            </a>
+
+            <div id="inAppWarning" class="warning-box">
+                ⚠️ <strong>WhatsApp/App Browser:</strong> Yahan direct download block ho sakta hai. Upar <strong>"Open in Chrome"</strong> dabayein ya upar <strong>3 dots (⋮) → Open in Chrome</strong> chunein.
+            </div>
+
+            <div class="security-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5B81D" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Direct GitHub Release • Safe &amp; Virus-Free</span>
+            </div>
         </div>
 
-        <div class="footer">Developed by Fahad Studio</div>
+        <!-- Key Features Card -->
+        <div class="section-card">
+            <div class="section-title">
+                <span>✨</span> App ki Khaas Baatein
+            </div>
+            <div class="feature-grid">
+                <div class="feat-box">
+                    <div class="feat-icon">🕌</div>
+                    <div class="feat-title">Live Jama'at Time</div>
+                    <div class="feat-sub">Masjid committee dwara updated sahi waqt</div>
+                </div>
+                <div class="feat-box">
+                    <div class="feat-icon">⏰</div>
+                    <div class="feat-title">10-Min Alert</div>
+                    <div class="feat-sub">Jama'at se 10 minute pehle notification</div>
+                </div>
+                <div class="feat-box">
+                    <div class="feat-icon">📍</div>
+                    <div class="feat-title">Nearby Masjids</div>
+                    <div class="feat-sub">Apne ilake ki qareebi masjidein dhundhein</div>
+                </div>
+                <div class="feat-box">
+                    <div class="feat-icon">📢</div>
+                    <div class="feat-title">Announcements</div>
+                    <div class="feat-sub">Masjid ke zaroori ailaan aur updates</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simple Installation Steps -->
+        <div class="section-card">
+            <div class="section-title">
+                <span>📲</span> Install Kaise Karein? (3 Aasan Steps)
+            </div>
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">Upar peele rang ke <strong>Download Official APK</strong> button par click karein.</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">Agar Chrome me <em>"File might be harmful"</em> ka message aaye, to <strong>Download anyway</strong> dabayein (Play Store se bahar ke har app par yeh aata hai, yeh 100% safe hai).</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">Download poora hone par notification par click karke <strong>Install</strong> karein.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Crafted with ❤️ by <strong>Fahad Studio</strong> • Bihpur, Bihar
+        </div>
     </div>
 
     <script>
@@ -62,15 +426,15 @@
         if (isInApp && /Android/i.test(ua)) {
             document.getElementById('inAppWarning').style.display = 'block';
             document.getElementById('chromeBtn').style.display = 'block';
-            // Automatically try opening in Chrome
             window.location.href = "intent://mf812791-dev.github.io/MasjidIn-Web/#Intent;scheme=https;package=com.android.chrome;end";
         }
 
         function handleDownload() {
             var btn = document.getElementById('dlBtn');
-            btn.innerHTML = '⏳ Downloading...';
+            var origHTML = btn.innerHTML;
+            btn.innerHTML = '<span>⏳ Downloading Started...</span>';
             setTimeout(function() {
-                btn.innerHTML = '⬇ Download App (APK)';
+                btn.innerHTML = origHTML;
             }, 5000);
         }
     </script>
