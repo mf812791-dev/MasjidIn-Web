@@ -11,8 +11,10 @@
         .badge { display: inline-block; background: #dcfce7; color: #166534; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 99px; margin-bottom: 14px; }
         h1 { font-size: 28px; color: #0f172a; margin-bottom: 8px; }
         p.subtitle { font-size: 15px; color: #475569; line-height: 1.5; margin-bottom: 24px; }
-        .download-btn { display: block; width: 100%; background: #059669; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: 700; padding: 16px; border-radius: 12px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35); transition: background 0.2s; }
+        .download-btn { display: block; width: 100%; background: #059669; color: #ffffff; text-decoration: none; font-size: 18px; font-weight: 700; padding: 16px; border-radius: 12px; box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35); transition: background 0.2s; cursor: pointer; }
         .download-btn:hover { background: #047857; }
+        .chrome-btn { display: none; margin-top: 12px; width: 100%; background: #2563eb; color: #ffffff; text-decoration: none; font-size: 15px; font-weight: 600; padding: 12px; border-radius: 10px; }
+        .warning-box { display: none; margin-top: 14px; padding: 12px; background: #fef3c7; border: 1px solid #f59e0b; color: #92400e; border-radius: 10px; font-size: 13px; line-height: 1.5; text-align: left; }
         .meta { font-size: 12px; color: #64748b; margin-top: 10px; }
         .guide { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-top: 24px; text-align: left; }
         .guide h3 { font-size: 14px; color: #0f172a; margin-bottom: 10px; }
@@ -27,10 +29,19 @@
         <h1>MasjidIn</h1>
         <p class="subtitle">Real-time Jama'at prayer times, 10-minute alerts, aur masjid announcements apne mobile par paayein.</p>
         
-        <a href="https://github.com/mf812791-dev/MasjidIn-Releases/releases/latest/download/app-release.apk" class="download-btn">
+        <a id="dlBtn" href="https://github.com/mf812791-dev/MasjidIn-Releases/releases/latest/download/app-release.apk" class="download-btn" onclick="handleDownload()">
             ⬇ Download App (APK)
         </a>
-        <div class="meta">Free • Android • Direct Official Download</div>
+
+        <a id="chromeBtn" href="intent://mf812791-dev.github.io/MasjidIn-Web/#Intent;scheme=https;package=com.android.chrome;end" class="chrome-btn">
+            🌐 Open in Chrome to Download
+        </a>
+
+        <div id="inAppWarning" class="warning-box">
+            ⚠️ <strong>WhatsApp/App Browser Detected:</strong> Yahan se direct download block ho sakta hai. Upar neele button <strong>"Open in Chrome"</strong> par click karein ya upar <strong>3 dots (⋮) → Open in Chrome</strong> chunein.
+        </div>
+
+        <div class="meta">Free • Android • Direct Official Download (21.2 MB)</div>
 
         <div class="guide">
             <h3>📲 Install karne ka aasan tarika:</h3>
@@ -43,5 +54,25 @@
 
         <div class="footer">Developed by Fahad Studio</div>
     </div>
+
+    <script>
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        var isInApp = /FBAN|FBAV|Instagram|WhatsApp|wv|WebView/i.test(ua);
+
+        if (isInApp && /Android/i.test(ua)) {
+            document.getElementById('inAppWarning').style.display = 'block';
+            document.getElementById('chromeBtn').style.display = 'block';
+            // Automatically try opening in Chrome
+            window.location.href = "intent://mf812791-dev.github.io/MasjidIn-Web/#Intent;scheme=https;package=com.android.chrome;end";
+        }
+
+        function handleDownload() {
+            var btn = document.getElementById('dlBtn');
+            btn.innerHTML = '⏳ Downloading...';
+            setTimeout(function() {
+                btn.innerHTML = '⬇ Download App (APK)';
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
