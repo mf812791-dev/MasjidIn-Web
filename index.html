@@ -217,7 +217,7 @@
             color: rgba(255, 255, 255, 0.82);
         }
 
-        /* Play Store Coming Soon Trust Notice */
+        /* Play Store Coming Soon Notice */
         .playstore-notice {
             background: var(--gold-soft);
             border: 1.5px solid var(--gold-border);
@@ -273,15 +273,120 @@
         .section-sub {
             font-size: 12.5px;
             color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             line-height: 1.45;
+        }
+
+        /* Play Store Style Screenshots Carousel */
+        .ss-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            scroll-snap-type: x mandatory;
+        }
+        .ss-scroll::-webkit-scrollbar { height: 5px; }
+        .ss-scroll::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; }
+        .ss-card {
+            flex: 0 0 155px;
+            scroll-snap-align: start;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1.5px solid #E2DCCB;
+            background: var(--bg-cream);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .ss-card img {
+            width: 100%;
+            height: 290px;
+            object-fit: cover;
+            display: block;
+        }
+        .ss-caption {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-align: center;
+            padding: 7px 6px;
+            background: #FFFFFF;
+            border-top: 1px solid #ECE7D8;
+        }
+
+        /* Role Switcher Tabs (Normal User vs Admin) */
+        .role-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--bg-cream);
+            border: 1px solid #E2DCCB;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 14px;
+        }
+        .role-tab {
+            border: none;
+            background: transparent;
+            padding: 10px 8px;
+            border-radius: 9px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .role-tab.active {
+            background: var(--primary-green);
+            color: #FFFFFF;
+            box-shadow: 0 2px 8px rgba(11, 70, 47, 0.2);
+        }
+
+        .guide-panel { display: none; }
+        .guide-panel.active { display: block; }
+
+        .flow-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .flow-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            background: var(--bg-cream);
+            border: 1px solid #ECE7D8;
+            border-radius: 13px;
+            padding: 12px;
+        }
+        .flow-badge {
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            color: #0D261C;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .flow-content h5 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+        .flow-content p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         /* Visual Installation Mockup Cards */
         .visual-steps {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
         .v-step {
             background: var(--bg-cream);
@@ -296,11 +401,11 @@
             margin-bottom: 8px;
         }
         .step-num {
-            width: 25px;
-            height: 25px;
+            width: 24px;
+            height: 24px;
             background: var(--primary-green);
             color: var(--gold);
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 800;
             border-radius: 50%;
             display: flex;
@@ -317,7 +422,7 @@
             font-size: 12.5px;
             color: var(--text-muted);
             line-height: 1.45;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         /* Simulated Android Phone Dialogs */
@@ -375,16 +480,8 @@
             padding: 6px 14px;
             border-radius: 99px;
             background: #1A73E8;
-            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.35);
-            position: relative;
-        }
-        .tap-hint {
-            display: inline-block;
-            margin-left: 4px;
-            font-size: 11px;
         }
 
-        /* Simulated Settings Toggle */
         .settings-row {
             display: flex;
             align-items: center;
@@ -423,60 +520,11 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
-        /* App UI Mini Preview (CSS Mockup of MasjidIn Screen) */
-        .app-preview-box {
-            background: var(--bg-cream);
-            border: 1.5px solid #E2DCCB;
-            border-radius: 18px;
-            padding: 14px;
-        }
-        .mini-green-card {
-            background: var(--primary-green);
-            color: #FFFFFF;
-            border-radius: 14px;
-            padding: 14px;
-            margin-bottom: 10px;
-        }
-        .mini-card-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .mini-mosque-name {
-            font-size: 13.5px;
-            font-weight: 700;
-        }
-        .mini-pill {
-            background: var(--gold);
-            color: #0D261C;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 99px;
-        }
-        .mini-time-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-        .mini-countdown {
-            font-size: 20px;
-            font-weight: 800;
-            color: #FFFFFF;
-        }
-        .mini-jamaat {
-            font-size: 11.5px;
-            color: var(--gold);
-            font-weight: 600;
-        }
-
         /* Features Grid */
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 12px;
         }
         .feat-box {
             background: var(--bg-cream);
@@ -582,7 +630,108 @@
             </div>
         </div>
 
-        <!-- Visual Installation Guide (Phone Dialog Previews) -->
+        <!-- Play Store Style Screenshots Section (Auto-hides any missing image) -->
+        <div class="section-card" id="ssSection">
+            <div class="section-title">
+                <span>📱</span> App Screenshots (Preview)
+            </div>
+            <p class="section-sub">
+                Download karne se pehle app ka interface dekhein (swipe karein):
+            </p>
+            <div class="ss-scroll">
+                <div class="ss-card">
+                    <img src="ss1.png" alt="Live Jama'at Screen" onerror="this.parentElement.style.display='none'; checkScreenshots();">
+                    <div class="ss-caption">Live Jama'at Time</div>
+                </div>
+                <div class="ss-card">
+                    <img src="ss2.png" alt="Login Screen" onerror="this.parentElement.style.display='none'; checkScreenshots();">
+                    <div class="ss-caption">Easy Login</div>
+                </div>
+                <div class="ss-card">
+                    <img src="ss3.png" alt="Admin Portal" onerror="this.parentElement.style.display='none'; checkScreenshots();">
+                    <div class="ss-caption">Admin Portal</div>
+                </div>
+                <div class="ss-card">
+                    <img src="ss4.png" alt="Screen 4" onerror="this.parentElement.style.display='none'; checkScreenshots();">
+                    <div class="ss-caption">Announcements</div>
+                </div>
+                <div class="ss-card">
+                    <img src="ss5.jpg" alt="Screen 5" onerror="this.parentElement.style.display='none'; checkScreenshots();">
+                    <div class="ss-caption">10-Min Alert</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive User & Admin Guide -->
+        <div class="section-card">
+            <div class="section-title">
+                <span>📖</span> App Kaise Use Karein? (User &amp; Admin Guide)
+            </div>
+            <p class="section-sub">
+                Apni zaroorat ke hisab se neeche tab chunein:
+            </p>
+
+            <div class="role-tabs">
+                <button class="role-tab active" onclick="switchRole('user', this)">🕌 Normal User (Namazi)</button>
+                <button class="role-tab" onclick="switchRole('admin', this)">🛡️ Masjid Admin</button>
+            </div>
+
+            <!-- Normal User Panel -->
+            <div id="panel-user" class="guide-panel active">
+                <div class="flow-list">
+                    <div class="flow-item">
+                        <div class="flow-badge">1</div>
+                        <div class="flow-content">
+                            <h5>App khol kar Login karein</h5>
+                            <p>Install karne ke baad app kholein aur apna account login karein—yeh sirf ek baar karna hoga.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-badge">2</div>
+                        <div class="flow-content">
+                            <h5>Apni Masjid chunein</h5>
+                            <p>Home screen par apne ilake ki nazdeeki masjid dekhein ya search karke Favorite me save karein.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-badge">3</div>
+                        <div class="flow-content">
+                            <h5>10-Min Alert aur Ailaan paayein</h5>
+                            <p>Ab aapko har namaz ki Jama'at se 10 minute pehle alert aur masjid ke zaroori announcements milte rahenge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Masjid Admin Panel -->
+            <div id="panel-admin" class="guide-panel">
+                <div class="flow-list">
+                    <div class="flow-item">
+                        <div class="flow-badge">1</div>
+                        <div class="flow-content">
+                            <h5>Pehle App me Login karein</h5>
+                            <p>Aam user ki tarah app install karke apni ID se login kar lein.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-badge">2</div>
+                        <div class="flow-content">
+                            <h5>Admin Portal tab me jaayein</h5>
+                            <p>App me neeche daayi taraf <strong>"Admin Portal"</strong> par click karein, apni masjid ki details bharein aur <strong>Submit / Apply</strong> kar dein.</p>
+                        </div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-badge">3</div>
+                        <div class="flow-content">
+                            <h5>Jama'at Time aur Message update karein</h5>
+                            <p>Request approve hote hi aap apni masjid ka sahi Jama'at waqt aur zaroori ailaan (announcements) sabhi namazi bhaiyon ko bhej sakte hain.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Installation Guide -->
         <div class="section-card">
             <div class="section-title">
                 <span>📲</span> Download &amp; Install Guide (Ghabrayein Nahi)
@@ -592,14 +741,13 @@
             </p>
 
             <div class="visual-steps">
-                <!-- Visual Step 1 -->
                 <div class="v-step">
                     <div class="v-step-header">
                         <div class="step-num">1</div>
                         <div class="v-step-title">Warning aane par "Download anyway" dabayein</div>
                     </div>
                     <p class="v-step-desc">
-                        Button dabane par Chrome me neeche jaisa message dikhega. Har direct APK par Android yeh dikhata hai—neele button par click karein:
+                        Button dabane par Chrome me neeche jaisa message dikhega—neele button par click karein:
                     </p>
                     <div class="phone-dialog">
                         <div class="dialog-top">
@@ -616,14 +764,13 @@
                     </div>
                 </div>
 
-                <!-- Visual Step 2 -->
                 <div class="v-step">
                     <div class="v-step-header">
                         <div class="step-num">2</div>
                         <div class="v-step-title">Settings me Permission "Allow" karein</div>
                     </div>
                     <p class="v-step-desc">
-                        Download poora hone par file kholein. Agar phone permission maange, to <strong>Settings</strong> me jaakar is button ko ON kar dein:
+                        Download poora hone par file kholein. Agar permission maange, to Settings me is button ko ON kar dein:
                     </p>
                     <div class="settings-row">
                         <div>
@@ -634,14 +781,13 @@
                     </div>
                 </div>
 
-                <!-- Visual Step 3 -->
                 <div class="v-step">
                     <div class="v-step-header">
                         <div class="step-num">3</div>
                         <div class="v-step-title">"Install" par click karein — Tayyar!</div>
                     </div>
                     <p class="v-step-desc">
-                        Ab screen par <strong>Install</strong> button dikhega. Use dabate hi MasjidIn aapke phone me install ho jayega:
+                        Ab screen par <strong>Install</strong> button dabate hi MasjidIn aapke phone me install ho jayega:
                     </p>
                     <div class="phone-dialog">
                         <div class="dialog-top">
@@ -660,52 +806,31 @@
             </div>
         </div>
 
-        <!-- App Inside Preview & Features -->
+        <!-- App Features -->
         <div class="section-card">
             <div class="section-title">
-                <span>✨</span> App ke Andar Kya Milega?
+                <span>✨</span> App ki Khaas Baatein
             </div>
-            <p class="section-sub">
-                Saaf-suthra interface jisse har umr ke log aasani se Jama'at ka waqt dekh sakein:
-            </p>
-
-            <!-- Mini UI Preview matching MasjidIn -->
-            <div class="app-preview-box">
-                <div class="mini-green-card">
-                    <div class="mini-card-top">
-                        <div class="mini-mosque-name">🕌 Nearby Masjid Live</div>
-                        <div class="mini-pill">Next Iqamah</div>
-                    </div>
-                    <div class="mini-time-row">
-                        <div>
-                            <div style="font-size:10px; opacity:0.75;">Jama'at me bacha waqt</div>
-                            <div class="mini-countdown">10m Alert</div>
-                        </div>
-                        <div class="mini-jamaat">⏰ Real-time Sync</div>
-                    </div>
+            <div class="feature-grid">
+                <div class="feat-box">
+                    <div class="feat-icon">🕌</div>
+                    <div class="feat-title">Live Jama'at Time</div>
+                    <div class="feat-sub">Masjid committee dwara updated sahi waqt</div>
                 </div>
-
-                <div class="feature-grid">
-                    <div class="feat-box">
-                        <div class="feat-icon">🕌</div>
-                        <div class="feat-title">Live Jama'at Time</div>
-                        <div class="feat-sub">Masjid committee dwara updated sahi waqt</div>
-                    </div>
-                    <div class="feat-box">
-                        <div class="feat-icon">⏰</div>
-                        <div class="feat-title">10-Min Alert</div>
-                        <div class="feat-sub">Jama'at se 10 minute pehle notification</div>
-                    </div>
-                    <div class="feat-box">
-                        <div class="feat-icon">📍</div>
-                        <div class="feat-title">Nearby Masjids</div>
-                        <div class="feat-sub">Apne ilake ki qareebi masjidein dhundhein</div>
-                    </div>
-                    <div class="feat-box">
-                        <div class="feat-icon">📢</div>
-                        <div class="feat-title">Announcements</div>
-                        <div class="feat-sub">Masjid ke zaroori ailaan aur updates</div>
-                    </div>
+                <div class="feat-box">
+                    <div class="feat-icon">⏰</div>
+                    <div class="feat-title">10-Min Alert</div>
+                    <div class="feat-sub">Jama'at se 10 minute pehle notification</div>
+                </div>
+                <div class="feat-box">
+                    <div class="feat-icon">📍</div>
+                    <div class="feat-title">Nearby Masjids</div>
+                    <div class="feat-sub">Apne ilake ki qareebi masjidein dhundhein</div>
+                </div>
+                <div class="feat-box">
+                    <div class="feat-icon">📢</div>
+                    <div class="feat-title">Announcements</div>
+                    <div class="feat-sub">Masjid ke zaroori ailaan aur updates</div>
                 </div>
             </div>
         </div>
@@ -732,6 +857,20 @@
             setTimeout(function() {
                 btn.innerHTML = origHTML;
             }, 5000);
+        }
+
+        function switchRole(role, el) {
+            document.querySelectorAll('.role-tab').forEach(function(t) { t.classList.remove('active'); });
+            document.querySelectorAll('.guide-panel').forEach(function(p) { p.classList.remove('active'); });
+            el.classList.add('active');
+            document.getElementById('panel-' + role).classList.add('active');
+        }
+
+        function checkScreenshots() {
+            var visible = document.querySelectorAll('.ss-card:not([style*="display: none"])');
+            if (visible.length === 0) {
+                document.getElementById('ssSection').style.display = 'none';
+            }
         }
     </script>
 </body>
