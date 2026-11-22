@@ -30,7 +30,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 16px 40px;
+            padding: 20px 16px 44px;
         }
 
         .container {
@@ -74,7 +74,7 @@
             box-shadow: 0 14px 30px rgba(11, 70, 47, 0.22);
             position: relative;
             overflow: hidden;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
         .hero-card::after {
             content: "";
@@ -92,7 +92,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
         .app-icon-box {
             width: 68px;
@@ -127,7 +127,7 @@
             font-size: 14px;
             color: rgba(255, 255, 255, 0.88);
             line-height: 1.55;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         /* Stats Strip */
@@ -138,7 +138,7 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 14px;
             padding: 12px 8px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             text-align: center;
         }
         .stat-item { position: relative; }
@@ -214,10 +214,45 @@
             gap: 6px;
             margin-top: 12px;
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.78);
+            color: rgba(255, 255, 255, 0.82);
         }
 
-        /* Features Section */
+        /* Play Store Coming Soon Trust Notice */
+        .playstore-notice {
+            background: var(--gold-soft);
+            border: 1.5px solid var(--gold-border);
+            border-radius: 18px;
+            padding: 15px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .notice-icon {
+            width: 36px;
+            height: 36px;
+            background: #FFFFFF;
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .notice-content h4 {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 4px;
+        }
+        .notice-content p {
+            font-size: 12.5px;
+            color: #4A3B12;
+            line-height: 1.5;
+        }
+
+        /* Section Cards */
         .section-card {
             background: var(--card-white);
             border: 1px solid #E6E2D6;
@@ -227,18 +262,221 @@
             box-shadow: 0 4px 14px rgba(17, 36, 28, 0.04);
         }
         .section-title {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 15.5px;
+            font-weight: 800;
             color: var(--primary-green);
-            margin-bottom: 14px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        .section-sub {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.45;
+        }
+
+        /* Visual Installation Mockup Cards */
+        .visual-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .v-step {
+            background: var(--bg-cream);
+            border: 1px solid #E6E0CE;
+            border-radius: 16px;
+            padding: 14px;
+        }
+        .v-step-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .step-num {
+            width: 25px;
+            height: 25px;
+            background: var(--primary-green);
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .v-step-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .v-step-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.45;
+            margin-bottom: 12px;
+        }
+
+        /* Simulated Android Phone Dialogs */
+        .phone-dialog {
+            background: #FFFFFF;
+            border: 1px solid #D9DFE5;
+            border-radius: 14px;
+            padding: 12px 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+        .dialog-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .dialog-file-icon {
+            width: 32px;
+            height: 32px;
+            background: #E8F0FE;
+            color: #1A73E8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .dialog-text-main {
+            font-size: 12px;
+            font-weight: 700;
+            color: #202124;
+        }
+        .dialog-text-sub {
+            font-size: 11px;
+            color: #5F6368;
+        }
+        .dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        .btn-mock-cancel {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #5F6368;
+            padding: 6px 12px;
+            border-radius: 99px;
+            background: #F1F3F4;
+        }
+        .btn-mock-allow {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #FFFFFF;
+            padding: 6px 14px;
+            border-radius: 99px;
+            background: #1A73E8;
+            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.35);
+            position: relative;
+        }
+        .tap-hint {
+            display: inline-block;
+            margin-left: 4px;
+            font-size: 11px;
+        }
+
+        /* Simulated Settings Toggle */
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #FFFFFF;
+            border: 1px solid #D9DFE5;
+            border-radius: 12px;
+            padding: 11px 14px;
+        }
+        .settings-lbl {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #202124;
+        }
+        .settings-sub {
+            font-size: 10.5px;
+            color: #5F6368;
+        }
+        .toggle-on {
+            width: 42px;
+            height: 24px;
+            background: #059669;
+            border-radius: 99px;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .toggle-on::after {
+            content: "";
+            position: absolute;
+            right: 3px;
+            top: 3px;
+            width: 18px;
+            height: 18px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* App UI Mini Preview (CSS Mockup of MasjidIn Screen) */
+        .app-preview-box {
+            background: var(--bg-cream);
+            border: 1.5px solid #E2DCCB;
+            border-radius: 18px;
+            padding: 14px;
+        }
+        .mini-green-card {
+            background: var(--primary-green);
+            color: #FFFFFF;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+        .mini-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .mini-mosque-name {
+            font-size: 13.5px;
+            font-weight: 700;
+        }
+        .mini-pill {
+            background: var(--gold);
+            color: #0D261C;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 99px;
+        }
+        .mini-time-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .mini-countdown {
+            font-size: 20px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .mini-jamaat {
+            font-size: 11.5px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Features Grid */
         .feature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
+            margin-top: 12px;
         }
         .feat-box {
             background: var(--bg-cream);
@@ -262,42 +500,9 @@
             line-height: 1.35;
         }
 
-        /* Install Guide Steps */
-        .step-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .step-num {
-            width: 24px;
-            height: 24px;
-            background: var(--gold-soft);
-            border: 1px solid var(--gold-border);
-            color: var(--primary-green);
-            font-size: 12px;
-            font-weight: 800;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-        .step-text {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.45;
-        }
-        .step-text strong { color: var(--text-dark); }
-
         .footer {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 8px;
             font-size: 12px;
             color: var(--text-muted);
         }
@@ -307,7 +512,7 @@
 <body>
 
     <div class="container">
-        <!-- Top Brand Bar (Your Wordmark Logo) -->
+        <!-- Top Brand Bar -->
         <div class="top-bar">
             <img src="logo.png" alt="MasjidIn" class="brand-logo-img">
             <div class="verified-pill">
@@ -319,7 +524,6 @@
         <!-- Main App Card -->
         <div class="hero-card">
             <div class="app-header">
-                <!-- Your App Icon Logo -->
                 <div class="app-icon-box">
                     <img src="icon.png" alt="MasjidIn Icon">
                 </div>
@@ -369,52 +573,139 @@
             </div>
         </div>
 
-        <!-- Key Features Card -->
+        <!-- Google Play Store Coming Soon Notice -->
+        <div class="playstore-notice">
+            <div class="notice-icon">🛡️</div>
+            <div class="notice-content">
+                <h4>Play Store par jald aa raha hai!</h4>
+                <p>Yeh app abhi <strong>Google Play Store</strong> par publish hone ki prakriya me hai, isliye abhi ise hamari official website se direct APK ke zariye download kiya ja raha hai. Yeh 100% surakshit hai.</p>
+            </div>
+        </div>
+
+        <!-- Visual Installation Guide (Phone Dialog Previews) -->
         <div class="section-card">
             <div class="section-title">
-                <span>✨</span> App ki Khaas Baatein
+                <span>📲</span> Download &amp; Install Guide (Ghabrayein Nahi)
             </div>
-            <div class="feature-grid">
-                <div class="feat-box">
-                    <div class="feat-icon">🕌</div>
-                    <div class="feat-title">Live Jama'at Time</div>
-                    <div class="feat-sub">Masjid committee dwara updated sahi waqt</div>
+            <p class="section-sub">
+                Kyunki app abhi Play Store ke bahar se install ho raha hai, phone me neeche dikhaye gaye 3 aasan steps aayenge:
+            </p>
+
+            <div class="visual-steps">
+                <!-- Visual Step 1 -->
+                <div class="v-step">
+                    <div class="v-step-header">
+                        <div class="step-num">1</div>
+                        <div class="v-step-title">Warning aane par "Download anyway" dabayein</div>
+                    </div>
+                    <p class="v-step-desc">
+                        Button dabane par Chrome me neeche jaisa message dikhega. Har direct APK par Android yeh dikhata hai—neele button par click karein:
+                    </p>
+                    <div class="phone-dialog">
+                        <div class="dialog-top">
+                            <div class="dialog-file-icon">📦</div>
+                            <div>
+                                <div class="dialog-text-main">File might be harmful</div>
+                                <div class="dialog-text-sub">app-release.apk (21.2 MB)</div>
+                            </div>
+                        </div>
+                        <div class="dialog-actions">
+                            <span class="btn-mock-cancel">Cancel</span>
+                            <span class="btn-mock-allow">Download anyway 👆</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="feat-box">
-                    <div class="feat-icon">⏰</div>
-                    <div class="feat-title">10-Min Alert</div>
-                    <div class="feat-sub">Jama'at se 10 minute pehle notification</div>
+
+                <!-- Visual Step 2 -->
+                <div class="v-step">
+                    <div class="v-step-header">
+                        <div class="step-num">2</div>
+                        <div class="v-step-title">Settings me Permission "Allow" karein</div>
+                    </div>
+                    <p class="v-step-desc">
+                        Download poora hone par file kholein. Agar phone permission maange, to <strong>Settings</strong> me jaakar is button ko ON kar dein:
+                    </p>
+                    <div class="settings-row">
+                        <div>
+                            <div class="settings-lbl">Allow from this source</div>
+                            <div class="settings-sub">Chrome se app install karne ki anumati</div>
+                        </div>
+                        <div class="toggle-on"></div>
+                    </div>
                 </div>
-                <div class="feat-box">
-                    <div class="feat-icon">📍</div>
-                    <div class="feat-title">Nearby Masjids</div>
-                    <div class="feat-sub">Apne ilake ki qareebi masjidein dhundhein</div>
-                </div>
-                <div class="feat-box">
-                    <div class="feat-icon">📢</div>
-                    <div class="feat-title">Announcements</div>
-                    <div class="feat-sub">Masjid ke zaroori ailaan aur updates</div>
+
+                <!-- Visual Step 3 -->
+                <div class="v-step">
+                    <div class="v-step-header">
+                        <div class="step-num">3</div>
+                        <div class="v-step-title">"Install" par click karein — Tayyar!</div>
+                    </div>
+                    <p class="v-step-desc">
+                        Ab screen par <strong>Install</strong> button dikhega. Use dabate hi MasjidIn aapke phone me install ho jayega:
+                    </p>
+                    <div class="phone-dialog">
+                        <div class="dialog-top">
+                            <div class="dialog-file-icon" style="background:#E6F4EE; color:#0B462F;">🕌</div>
+                            <div>
+                                <div class="dialog-text-main">MasjidIn</div>
+                                <div class="dialog-text-sub">Do you want to install this app?</div>
+                            </div>
+                        </div>
+                        <div class="dialog-actions">
+                            <span class="btn-mock-cancel">Cancel</span>
+                            <span class="btn-mock-allow" style="background:#0B462F;">Install 👆</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Simple Installation Steps -->
+        <!-- App Inside Preview & Features -->
         <div class="section-card">
             <div class="section-title">
-                <span>📲</span> Install Kaise Karein? (3 Aasan Steps)
+                <span>✨</span> App ke Andar Kya Milega?
             </div>
-            <div class="step-list">
-                <div class="step-item">
-                    <div class="step-num">1</div>
-                    <div class="step-text">Upar peele rang ke <strong>Download Official APK</strong> button par click karein.</div>
+            <p class="section-sub">
+                Saaf-suthra interface jisse har umr ke log aasani se Jama'at ka waqt dekh sakein:
+            </p>
+
+            <!-- Mini UI Preview matching MasjidIn -->
+            <div class="app-preview-box">
+                <div class="mini-green-card">
+                    <div class="mini-card-top">
+                        <div class="mini-mosque-name">🕌 Nearby Masjid Live</div>
+                        <div class="mini-pill">Next Iqamah</div>
+                    </div>
+                    <div class="mini-time-row">
+                        <div>
+                            <div style="font-size:10px; opacity:0.75;">Jama'at me bacha waqt</div>
+                            <div class="mini-countdown">10m Alert</div>
+                        </div>
+                        <div class="mini-jamaat">⏰ Real-time Sync</div>
+                    </div>
                 </div>
-                <div class="step-item">
-                    <div class="step-num">2</div>
-                    <div class="step-text">Agar Chrome me <em>"File might be harmful"</em> ka message aaye, to <strong>Download anyway</strong> dabayein (Play Store se bahar ke har app par yeh aata hai, yeh 100% safe hai).</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">3</div>
-                    <div class="step-text">Download poora hone par notification par click karke <strong>Install</strong> karein.</div>
+
+                <div class="feature-grid">
+                    <div class="feat-box">
+                        <div class="feat-icon">🕌</div>
+                        <div class="feat-title">Live Jama'at Time</div>
+                        <div class="feat-sub">Masjid committee dwara updated sahi waqt</div>
+                    </div>
+                    <div class="feat-box">
+                        <div class="feat-icon">⏰</div>
+                        <div class="feat-title">10-Min Alert</div>
+                        <div class="feat-sub">Jama'at se 10 minute pehle notification</div>
+                    </div>
+                    <div class="feat-box">
+                        <div class="feat-icon">📍</div>
+                        <div class="feat-title">Nearby Masjids</div>
+                        <div class="feat-sub">Apne ilake ki qareebi masjidein dhundhein</div>
+                    </div>
+                    <div class="feat-box">
+                        <div class="feat-icon">📢</div>
+                        <div class="feat-title">Announcements</div>
+                        <div class="feat-sub">Masjid ke zaroori ailaan aur updates</div>
+                    </div>
                 </div>
             </div>
         </div>
